@@ -1,21 +1,20 @@
 import React from 'react';
-import Contact from '../Contact/Contact';
 import styles from './Contact.module.css';
 
-const ContactList = ({ contacts, onDelete }) => {
+const Contact = ({ id, name, number, onDelete }) => {
   return (
-    <ul className={styles.list}>
-      {contacts.map(({ id, name, number }) => (
-        <Contact
-          key={id}
-          id={id}
-          name={name}
-          number={number}
-          onDelete={onDelete}
-        />
-      ))}
-    </ul>
+    <li className={styles.item}>
+      <span className={styles.contactInfo}>
+        {name}: {number}
+      </span>
+      <button
+        className={styles.deleteButton}
+        onClick={() => onDelete(id)}
+      >
+        Delete
+      </button>
+    </li>
   );
 };
 
-export default ContactList;
+export default Contact;
